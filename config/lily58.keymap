@@ -34,29 +34,43 @@
           compatible = "zmk,behavior-tap-dance";
           label = "TAP_DANCE_SHIFT_CAPS";
           #binding-cells = <0>;
-          tapping-term-ms = <150>;
+          tapping-term-ms = <140>;
           bindings = <&kp LSHIFT>, <&caps_word>;
       };
       tdrbp: tap_dance_right_bracket_parenthesis {
           compatible = "zmk,behavior-tap-dance";
           label = "TAP_DANCE_RIGHT_BRACKET_PARENTHESIS";
           #binding-cells = <0>;
-          tapping-term-ms = <150>;
+          tapping-term-ms = <180>;
           bindings = <&kp RBKT>, <&kp RPAR>;
       };
       tdlbp: tap_dance_left_bracket_parenthesis {
           compatible = "zmk,behavior-tap-dance";
           label = "TAP_DANCE_LEFT_BRACKET_PARENTHESIS";
           #binding-cells = <0>;
-          tapping-term-ms = <150>;
+          tapping-term-ms = <180>;
           bindings = <&kp LBKT>, <&kp LPAR>;
+      };
+      tdbd: tap_dance_backspace_delete {
+          compatible = "zmk,behavior-tap-dance";
+          label = "TAP_DANCE_BACKSPACE_DELETE";
+          #binding-cells = <0>;
+          tapping-term-ms = <140>;
+          bindings = <&kp BSPC>, <&kp DEL>;
       };
       tdem: tap_dance_equal_minus {
           compatible = "zmk,behavior-tap-dance";
           label = "TAP_DANCE_EQUAL_MINUS";
           #binding-cells = <0>;
-          tapping-term-ms = <150>;
+          tapping-term-ms = <180>;
           bindings = <&kp EQUAL>, <&kp MINUS>;
+      };
+      tdbs: tap_dance_backslash {
+          compatible = "zmk,behavior-tap-dance";
+          label = "TAP_DANCE_BASHSLASH";
+          #binding-cells = <0>;
+          tapping-term-ms = <180>;
+          bindings = <&kp FSLH>, <&kp BSLH>;
       };
   };
 
@@ -65,23 +79,23 @@
 
 // ◆ LDFLT Default layer
 // ┌──────────────┬──────────────┬──────────────┬──────────────┬──────────────┬──────────────┬──────────────▄──────────────┬──────────────┬──────────────┬──────────────┬──────────────┬──────────────┬──────────────┐
-// │ ESC~         │ 1            │ 2            │ 3            │ 4            │ 5            │              █              │ 6            │ 7            │ 8            │ 9            │ 0            │ TD_EM        │
+// │ ESC~         │ 1            │ 2            │ 3            │ 4            │ 5            │              █              │ 6            │ 7            │ 8            │ 9            │ 0            │ TD_BD        │
 // ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤              █              ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
-// │ TAB          │ Q            │ W            │ E            │ R            │ T            │              █              │ Y            │ U            │ I            │ O            │ P            │ \            │
+// │ TAB          │ Q            │ W            │ E            │ R            │ T            │              █              │ Y            │ U            │ I            │ O            │ P            │ TD_EM        │
 // ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤              █              ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
-// │ CTRL         │ A            │ S            │ D            │ F            │ G            │              █              │ H            │ H            │ K            │ L            │ ;            │ '            │
+// │ CTRL         │ A            │ S            │ D            │ F            │ G            │              █              │ H            │ J            │ K            │ L            │ ;            │ '            │
 // ├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────█──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
-// │ TD_SC        │ Z            │ X            │ C            │ V            │ B            │ TD_RBP       █ TD_LBP       │ N            │ M            │ ,            │ .            │ /            │ SHIFT        │
+// │ TD_SC        │ Z            │ X            │ C            │ V            │ B            │ TD_RBP       █ TD_LBP       │ N            │ M            │ ,            │ .            │ TD_BS        │ SHIFT        │
 // ├──────────────┴──────────────┴──────────────┼──────────────┼──────────────┼──────────────┼──────────────█──────────────┼──────────────┼──────────────┼──────────────┼──────────────┴──────────────┴──────────────┤
-// │                                            │ LGUI         │ LALT         │ MO.OPTS      │ SPACE.LNAV   █ ENTER        │ BKSPACE      │ LALT         │ LCTRL        │                                            │
+// │                                            │ LGUI         │ LALT         │ MO.OPTS      │ SPACE.LNAV   █ ENTER.LNAV   │ FN           │ LALT         │ MO.OPTS      │                                            │
 // └────────────────────────────────────────────┴──────────────┴──────────────┴──────────────┴──────────────▀──────────────┴──────────────┴──────────────┴──────────────┴────────────────────────────────────────────┘
     default_layer {
       bindings = <
-        &gresc    &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                    /**/         &kp N6   &kp N7   &kp N8    &kp N9  &kp N0   &tdem
-        &kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                     /**/         &kp Y    &kp U    &kp I     &kp O   &kp P    &kp BSLH
-        &kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G                     /**/         &kp H    &kp J    &kp K     &kp L   &kp SEMI &kp SQT
-        &tdsc     &kp Z  &kp X  &kp C    &kp V    &kp B     &tdlbp          /**/ &tdrbp  &kp N    &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHIFT
-                                &kp LGUI &kp LALT &mo LOPTS &lt LNAVI SPACE /**/ &kp RET &kp BSPC &kp RALT &kp RCTRL
+        &gresc    &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                    /**/               &kp N6   &kp N7    &kp N8    &kp N9  &kp N0   &tdbd
+        &kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                     /**/               &kp Y    &kp U     &kp I     &kp O   &kp P    &tdem
+        &kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G                     /**/               &kp H    &kp J     &kp K     &kp L   &kp SEMI &kp SQT
+        &tdsc     &kp Z  &kp X  &kp C    &kp V    &kp B     &tdlbp          /**/ &tdrbp        &kp N    &kp M     &kp COMMA &kp DOT &tdbs    &kp RSHIFT
+                                &kp LGUI &kp LALT &mo LOPTS &lt LNAVI SPACE /**/ &lt LNAVI RET &kp RALT &mo LOPTS &kp RCTRL
       >;
       sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
     };
